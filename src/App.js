@@ -4,13 +4,13 @@ import Button from '@material-ui/core/Button';
 import { NavButton } from './components/NavButton'
 import React, { Component } from 'react';
 import { NavBar } from './components/NavBar' 
+import SignUp from "./components/SignUp"
 
 class App extends Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      projectName: "ProjectZenith"
     }
   }
 
@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div>
         <NavBar appName = {this.state.projectName}/>
-        Project Zenith
+        <SignUp/>
       </div>
     )
   }
