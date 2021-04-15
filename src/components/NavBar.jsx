@@ -7,7 +7,6 @@ export class NavBar extends Component {
         this.state = {
 
         }
-        console.log(props)
     }
 
     render() {
