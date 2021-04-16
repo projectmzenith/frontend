@@ -1,17 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../../resources/logo.svg';
+import './SignInPage.css';
 import Button from '@material-ui/core/Button';
-import { NavButton } from './components/NavButton'
+import { NavButton } from '../NavButton'
 import React, { Component } from 'react';
-import { NavBar } from './components/NavBar' 
-import SignUp from "./components/SignUp"
+import { NavBar } from '../NavBar'
+import SignUp from "../SignUp"
+import {connect} from 'react-redux';
+import {addAnnouncment} from '../../actions';
 
-class App extends Component {
-  
+class SignInPage extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
     }
+  }
+
+  onSubmit=()=>{
+    console.log("clicked")
+    this.props.addAnnouncment(1);
   }
 
   render() {
@@ -19,10 +26,20 @@ class App extends Component {
       <div>
         <NavBar appName = {this.state.projectName}/>
         <SignUp/>
+        <Button style={{background: "white"}} onClick={()=>this.onSubmit()}>Click Me</Button>
+        <div>Current Count: {this.props.Announcements.Count }!</div>;
       </div>
     )
   }
 }
+
+const mapStateToProps=(state)=>{
+  return {
+    Announcements: state.Announcements
+  };
+}
+
+export default connect(mapStateToProps,{addAnnouncment})(SignInPage);
 
 // function App() {
 //   return (
@@ -57,5 +74,3 @@ class App extends Component {
 //     </div>
 //   );
 // }
-
-export default App;
