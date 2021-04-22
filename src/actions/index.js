@@ -17,10 +17,10 @@ export const createStream= (Values)=> async(dispatch, getState)=>{
     const header = { headers:{Authorization: `Bearer ${getState().Auth.token}`}};
     const response= await zenith.post('/endpoint', Values ,header);
     dispatch({
-     type: ACTION_NAME,
+     type: "ACTION_NAME",
      payload:response.data
     });
-    history.push('/')');
+    history.push('/');
   }catch(err){
     console.log(err);
   }
