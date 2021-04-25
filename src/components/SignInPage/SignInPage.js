@@ -7,6 +7,7 @@ import { NavBar } from '../NavBar'
 import SignUp from "../SignUp"
 import {connect} from 'react-redux';
 import {addAnnouncment} from '../../actions';
+import {Link} from 'react-router-dom';
 
 class SignInPage extends Component {
 
@@ -27,7 +28,10 @@ class SignInPage extends Component {
         <NavBar appName = {this.state.projectName}/>
         <SignUp/>
         <Button style={{background: "white"}} onClick={()=>this.onSubmit()}>Click Me</Button>
-        <div>Current Count: {this.props.Announcements.Count }!</div>;
+        <Link to={'/Announcements'} className='ui button primary'>
+          Announcements
+        </Link>
+        <div>Current Count {this.props.Announcements.Count }!</div>;
       </div>
     )
   }

@@ -92,7 +92,7 @@ class SignUp extends Component {
                 color="primary"
                 className={classes.submit}
                 onClick={() => {
-    
+
                 }}
               >
                 Sign In
