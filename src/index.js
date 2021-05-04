@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import reducers from './reducers';
-import thunk from 'redux-thunk';
+import reduxThunk from 'redux-thunk';
 
 //for debugging redux state...will finish implementing later
 //import { composeWithDevTools } from 'redux-devtools-extension';
@@ -18,7 +18,7 @@ import thunk from 'redux-thunk';
 //);
 
 ReactDOM.render(
-  <Provider store={createStore(reducers, applyMiddleware(thunk))}>
+  <Provider store={createStore(reducers, applyMiddleware(reduxThunk))}>
     <App />
   </Provider>,
   document.getElementById('root')

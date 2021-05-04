@@ -1,0 +1,24 @@
+.img {
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.img-container {
+  height: 30px;
+}
+
+.root: {
+  height: 100%;
+}
+
+.list {
+  maxheight: 200;
+  overflow: auto;
+}
+
+.hr {
+  clear: both;
+  visibility: hidden;
+}

@@ -1,20 +1,18 @@
 import React from 'react';
-import {Router, Route,Switch} from 'react-router-dom';
+import {BrowserRouter, Router, Route,Switch} from 'react-router-dom';
 import SignInPage from './SignInPage/SignInPage';
-import Calendarorsomething from './Calendarorsomething/Calendarorsomething';
-import history from '../history';
+import AnnouncementPage from './AnnouncementPage/AnnouncementPage';
+//import history from '../history';
 
 const App=()=> {
   return (
     <div>
-    <Router history={history}>
-      <div>
+    <BrowserRouter>
         <Switch>
           <Route path='/' exact component={SignInPage}/>
-          <Route path='/' exact component={Calendarorsomething}/>
+          <Route path='/Announcements' exact component={AnnouncementPage}/>
         </Switch>
-      </div>
-    </Router>
+    </BrowserRouter>
     </div>
   );
 }

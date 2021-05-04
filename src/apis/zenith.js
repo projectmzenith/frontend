@@ -1,5 +1,8 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL:'base url name here'
+  baseURL:'https://zenith-dev-api.herokuapp.com',
+  headers:{
+    'Access-Control-Allow-Origin': '*',
+  }
 });
