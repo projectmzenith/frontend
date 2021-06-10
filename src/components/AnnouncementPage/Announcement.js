@@ -25,7 +25,7 @@ const Announcement = ({ announcement }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const date = new Date(announcement.createdAt);
-
+  console.log(announcement.createdAt);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -135,9 +135,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const mapStateToProps = state => {
-  return {
-    Auth: state.Auth
-  };
+  return {};
 };
 
 export default connect(mapStateToProps)(Announcement);

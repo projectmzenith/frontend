@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -19,7 +20,7 @@ import ListAltRoundedIcon from "@material-ui/icons/ListAltRounded";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import AssignmentLateOutlinedIcon from "@material-ui/icons/AssignmentLateOutlined";
 
-const drawerWidth = 300;
+const drawerWidth = "20%";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,7 +45,8 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    backgroundColor: "#00589c"
   },
   content: {
     flexGrow: 1,
@@ -64,13 +66,46 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SideDrawer() {
+const SideDrawer = () => {
+  const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
+  };
+
+  const renderDrawerIcon = index => {
+    switch (index) {
+      case 0:
+        return <AssignmentLateOutlinedIcon />;
+      case 1:
+        return <EventAvailableOutlinedIcon />;
+      case 2:
+        return <AccountCircleOutlinedIcon />;
+      case 3:
+        return <ListAltRoundedIcon />;
+      case 4:
+        return <SettingsOutlinedIcon />;
+      default:
+        return;
+    }
+  };
+
+  const getTabNavigation = index => {
+    switch (index) {
+      case 0:
+        history.push("/Announcements");
+        break;
+      case 1:
+        history.push("/Events");
+        break;
+      case 2:
+      case 3:
+      case 4:
+      default:
+    }
   };
 
   return (
@@ -105,8 +140,17 @@ export default function SideDrawer() {
             "Requirements",
             "Settings"
           ].map((text, index) => (
-            <ListItem button key={text}>
-              {<ListItemIcon>{renderDrawerIcon(index)}</ListItemIcon>}
+            <ListItem
+              style={{ color: "white" }}
+              button
+              key={text}
+              onClick={() => getTabNavigation(index)}
+            >
+              {
+                <ListItemIcon style={{ color: "white" }}>
+                  {renderDrawerIcon(index)}
+                </ListItemIcon>
+              }
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -114,21 +158,6 @@ export default function SideDrawer() {
       </Drawer>
     </div>
   );
-}
-
-const renderDrawerIcon = index => {
-  switch (index) {
-    case 0:
-      return <AssignmentLateOutlinedIcon style={{ color: "black" }} />;
-    case 1:
-      return <EventAvailableOutlinedIcon style={{ color: "black" }} />;
-    case 2:
-      return <AccountCircleOutlinedIcon style={{ color: "black" }} />;
-    case 3:
-      return <ListAltRoundedIcon style={{ color: "black" }} />;
-    case 4:
-      return <SettingsOutlinedIcon style={{ color: "black" }} />;
-    default:
-      return;
-  }
 };
+
+export default SideDrawer;
