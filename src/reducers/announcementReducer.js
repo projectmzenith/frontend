@@ -3,7 +3,8 @@ import {
   EDIT_ANNOUNCEMENT,
   FETCH_ANNOUNCEMENTS,
   DELETE_ANNOUNCEMENT,
-  UPDATE_LIKE_COUNTER
+  UPDATE_LIKE_COUNTER,
+  ON_LOGOUT
 } from "../actions/types";
 import _ from "lodash";
 
@@ -30,7 +31,9 @@ export default (state = INITIAL_STATE, action) => {
     case DELETE_ANNOUNCEMENT:
       return _.omit(state, action.payload);
     case UPDATE_LIKE_COUNTER:
-      return _.omit(state, action.payload);
+      return state;
+    case ON_LOGOUT:
+      return INITIAL_STATE;
     default:
       return state;
   }
